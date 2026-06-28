@@ -1,0 +1,86 @@
+.disclosure-page {
+  padding-bottom: 8rem;
+}
+.page-header {
+  padding: 8rem 0 3rem 0;
+  text-align: center;
+}
+.page-title {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.page-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.disclosure-content-section {
+  padding: 2rem 0;
+}
+.disclosure-box {
+  padding: 3.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.disclosure-box h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 0.75rem 0;
+  color: var(--text-primary);
+}
+.disclosure-box h2:first-of-type {
+  margin-top: 0;
+}
+.disclosure-box p {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.compliance-highlight {
+  margin: 2.5rem 0;
+  padding: 2rem;
+  background: rgba(168, 85, 247, 0.05);
+  border-left: 4px solid var(--accent-purple);
+  border-radius: 12px;
+}
+.compliance-highlight h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-purple);
+}
+.compliance-highlight p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.disclosure-box ul {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.disclosure-box li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.disclosure-footer {
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  margin-top: 2rem;
+  font-style: italic;
+  color: var(--text-muted) !important;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 6rem 0 2rem 0;
+  }
+  .page-title {
+    font-size: 2.2rem;
+  }
+  .disclosure-box {
+    padding: 2rem 1.5rem;
+  }
+}

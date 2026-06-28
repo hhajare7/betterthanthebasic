@@ -1,0 +1,347 @@
+.admin-page {
+  padding-bottom: 8rem;
+}
+.page-header {
+  padding: 8rem 0 3rem 0;
+  text-align: center;
+}
+.page-title {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.page-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.form-section {
+  padding: 1rem 0;
+}
+.admin-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Status Banner styling */
+.status-banner {
+  padding: 1.25rem 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 12px;
+}
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.status-local {
+  border-left: 4px solid var(--accent-blue);
+  background: rgba(56, 189, 248, 0.05);
+}
+.status-local .status-dot {
+  background-color: var(--accent-blue);
+  box-shadow: 0 0 10px var(--accent-blue);
+}
+.status-vercel {
+  border-left: 4px solid var(--accent-pink);
+  background: rgba(244, 63, 94, 0.05);
+}
+.status-vercel .status-dot {
+  background-color: var(--accent-pink);
+  box-shadow: 0 0 10px var(--accent-pink);
+}
+.status-text {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.status-text strong {
+  color: var(--text-primary);
+}
+
+/* Feedback Cards */
+.feedback-card {
+  padding: 1.25rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.feedback-icon {
+  font-size: 1.4rem;
+}
+.error-box {
+  border-left: 4px solid var(--accent-pink);
+  background: rgba(244, 63, 94, 0.08);
+  color: var(--text-primary);
+}
+.success-box {
+  border-left: 4px solid var(--accent-blue);
+  background: rgba(56, 189, 248, 0.08);
+  color: var(--text-primary);
+}
+
+/* Form layout styles */
+.admin-form {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+.form-row {
+  display: grid;
+  gap: 1.5rem;
+}
+.grid-2 {
+  grid-template-columns: 1fr 1fr;
+}
+.grid-3 {
+  grid-template-columns: 1.5fr 1.5fr 1fr;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.flex-row-center {
+  flex-direction: row !important;
+  align-items: center;
+  margin-top: 1.8rem;
+}
+.checkbox-label {
+  cursor: pointer;
+  margin-bottom: 0 !important;
+}
+.field-help {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: -0.25rem;
+}
+
+/* PrimeNG override mappings to match existing styles */
+.w-full {
+  width: 100%;
+}
+.w-full-chips ::ng-deep .p-chips {
+  width: 100%;
+}
+.w-full-chips ::ng-deep .p-chips-multiple-container {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02) !important;
+  color: #fff;
+  font-family: var(--font-body);
+  transition: var(--transition-smooth);
+}
+.w-full-chips ::ng-deep .p-chips-token {
+  background: rgba(168, 85, 247, 0.2);
+  color: var(--accent-purple);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+  font-weight: 500;
+  border-radius: 6px;
+}
+.w-full-chips ::ng-deep .p-inputtext {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #fff !important;
+}
+::ng-deep .p-dropdown {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02) !important;
+  color: #fff;
+  transition: var(--transition-smooth);
+}
+::ng-deep .p-dropdown-label {
+  color: #fff !important;
+  padding: 0.75rem 1rem !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+::ng-deep .p-dropdown-panel {
+  background: hsl(240, 20%, 11%) !important;
+  border: 1px solid var(--border-color) !important;
+}
+::ng-deep .p-dropdown-item {
+  color: var(--text-secondary) !important;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+}
+::ng-deep .p-dropdown-item.p-highlight {
+  background: rgba(168, 85, 247, 0.15) !important;
+  color: var(--accent-purple) !important;
+}
+::ng-deep .p-dropdown-item:not(.p-highlight):hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: #fff !important;
+}
+::ng-deep .p-inputtext, textarea.p-inputtext {
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: rgba(255, 255, 255, 0.02) !important;
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: var(--transition-smooth);
+}
+::ng-deep .p-inputtext:focus, ::ng-deep .p-dropdown:focus-within {
+  outline: none;
+  border-color: var(--accent-purple) !important;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.15) !important;
+}
+textarea {
+  resize: vertical;
+}
+.content-textarea {
+  font-family: 'Courier New', Courier, monospace !important;
+  font-size: 0.9rem !important;
+  line-height: 1.5;
+  background: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Checkbox styling */
+::ng-deep .p-checkbox .p-checkbox-box {
+  border: 1px solid var(--border-color) !important;
+  background: rgba(255, 255, 255, 0.02) !important;
+  border-radius: 6px !important;
+  width: 20px;
+  height: 20px;
+}
+::ng-deep .p-checkbox .p-checkbox-box.p-highlight {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)) !important;
+  border-color: var(--accent-purple) !important;
+}
+
+/* Form actions */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+}
+.read-time-indicator {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+.btn-primary-pbutton {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue)) !important;
+  color: #fff !important;
+  border: none !important;
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3) !important;
+  border-radius: 12px !important;
+  font-family: var(--font-title) !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  font-size: 0.95rem !important;
+  padding: 0.75rem 1.5rem !important;
+}
+.btn-primary-pbutton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.4) !important;
+}
+
+/* Vercel download card styling */
+.vercel-download-card {
+  padding: 4rem;
+}
+.vercel-download-card h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+.vercel-download-card p {
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 2rem auto;
+}
+.step-list {
+  max-width: 550px;
+  margin: 0 auto 2.5rem auto;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  font-size: 0.95rem;
+}
+.step-list li {
+  margin-bottom: 0.75rem;
+}
+.step-list code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  font-family: monospace;
+}
+.download-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.btn-secondary-pbutton {
+  background: rgba(255, 255, 255, 0.05) !important;
+  color: var(--text-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  font-family: var(--font-title) !important;
+  font-weight: 600 !important;
+  cursor: pointer;
+  font-size: 0.95rem !important;
+  padding: 0.75rem 1.5rem !important;
+}
+.btn-secondary-pbutton:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.json-preview-group {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.json-preview-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.json-preview-box {
+  background: #0d0d13 !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 10px;
+  font-family: monospace !important;
+  font-size: 0.85rem !important;
+  padding: 1.25rem !important;
+}
+
+@media (max-width: 768px) {
+  .grid-2, .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .flex-row-center {
+    margin-top: 0.5rem;
+  }
+  .admin-form {
+    padding: 1.5rem;
+  }
+  .vercel-download-card {
+    padding: 2rem 1.5rem;
+  }
+}

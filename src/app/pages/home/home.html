@@ -1,0 +1,97 @@
+<div class="home-page">
+  <!-- Premium Hero Section -->
+  <section class="hero-section">
+    <div class="container hero-container">
+      <div class="hero-badge">
+        <span class="badge">CURATED RECOMMENDATIONS</span>
+      </div>
+      <h1 class="hero-title">
+        Elevate Your Essentials.<br>
+        <span class="gradient-text">Live Beyond The Basic.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Expertly researched blueprints in clinical skincare, aesthetic home & office decor, smart electronic gadgets, and curated daily essentials. 
+        We review the details, optimize the choices, and disclose everything.
+      </p>
+      <div class="hero-actions">
+        <a routerLink="/blogs" class="btn btn-primary">Explore All Guides</a>
+        <a routerLink="/about" class="btn btn-secondary">Our Philosophy</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FTC Disclosure Banner (US Rules Compliance) -->
+  <section class="home-ftc-banner">
+    <div class="container">
+      <div class="disclosure-card glass-panel">
+        <p>
+          <strong>US Affiliate Disclosure:</strong> BetterThanTheBasic is reader-supported. When you buy through our links, we may earn an affiliate commission from our partners (like Amazon and other platforms) at no additional cost to you. It helps us keep the lights on and provide premium, unbiased reviews. <a routerLink="/disclosure" class="learn-more">Learn more about our review process &rarr;</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Genres Section -->
+  <section class="genres-section">
+    <div class="container">
+      <h2 class="section-title">Focus Areas</h2>
+      <div class="genres-grid">
+        <div class="genre-card glass-panel" *ngFor="let genre of genres()">
+          <div class="genre-icon" [ngClass]="genre.toLowerCase().replace(' & ', '-')"></div>
+          <h3>{{ genre }}</h3>
+          <p>{{ getGenreDescription(genre) }}</p>
+          <a [routerLink]="['/blogs']" [queryParams]="{ genre: genre }" class="genre-link">View {{ genre }} Guides &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Blogs Section -->
+  <section class="recent-blogs-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Recent Premium Guides</h2>
+        <a routerLink="/blogs" class="view-all-link">All Articles &rarr;</a>
+      </div>
+      
+      <div class="blogs-grid">
+        <article class="blog-card glass-panel" *ngFor="let blog of recentBlogs()">
+          <div class="card-image-wrapper">
+            <img [src]="blog.imageUrl" [alt]="blog.title" loading="lazy">
+            <span class="card-genre-badge">{{ blog.genre }}</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span>{{ blog.publishedDate }}</span>
+              <span class="meta-dot"></span>
+              <span>{{ blog.readTime }}</span>
+            </div>
+            <h3 class="card-title">
+              <a [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a>
+            </h3>
+            <p class="card-description">{{ blog.description }}</p>
+            <div class="card-footer">
+              <span class="author-name">By {{ blog.author }}</span>
+              <a [routerLink]="['/blogs', blog.slug]" class="read-btn">Read &rarr;</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter/CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card glass-panel">
+        <h2 class="cta-title">Subscribe to the Upgrade</h2>
+        <p class="cta-subtitle">Get one high-performance guide delivered directly to your inbox every Sunday. No spam, only premium insights.</p>
+        <form (submit)="onSubscribe($event)" class="cta-form">
+          <input pInputText type="email" placeholder="Enter your email address" required class="cta-input">
+          <button pButton type="submit" label="Subscribe" class="btn-primary-pbutton"></button>
+        </form>
+        <p class="cta-success-message" *ngIf="subscribed()">Success! You are on the list to upgrade your essentials.</p>
+      </div>
+    </div>
+  </section>
+</div>

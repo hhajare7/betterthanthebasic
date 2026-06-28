@@ -6,23 +6,72 @@ import {
 } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
+import fs from 'node:fs';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
-/**
- * Example Express Rest API endpoints can be defined here.
- * Uncomment and define endpoints as necessary.
- *
- * Example:
- * ```ts
- * app.get('/api/{*splat}', (req, res) => {
- *   // Handle API request
- * });
- * ```
- */
+// API endpoint to create and save a new blog post locally
+app.post('/api/blogs', express.json(), (req, res) => {
+  try {
+    const newPost = req.body;
+    if (!newPost.title || !newPost.slug || !newPost.content) {
+      return res.status(400).json({ error: 'Title, slug, and content are required' });
+    }
+
+    const possiblePaths = [
+      join(process.cwd(), 'public', 'blogs.json'),
+      join(process.cwd(), 'dist', 'betterthanthebasic', 'browser', 'blogs.json'),
+      join(process.cwd(), 'browser', 'blogs.json'),
+    ];
+
+    let foundPath = null;
+    let blogs = [];
+
+    // Find the primary source file first, or whichever exists
+    for (const p of possiblePaths) {
+      if (fs.existsSync(p)) {
+        try {
+          const fileContent = fs.readFileSync(p, 'utf8');
+          blogs = JSON.parse(fileContent);
+          foundPath = p;
+          break;
+        } catch (e) {
+          console.error(`Error reading ${p}:`, e);
+        }
+      }
+    }
+
+    if (!foundPath) {
+      return res.status(500).json({ error: 'blogs.json not found on disk' });
+    }
+
+    // Check if slug already exists to prevent duplicates
+    if (blogs.some((b: any) => b.slug === newPost.slug)) {
+      return res.status(400).json({ error: `A blog post with slug "${newPost.slug}" already exists.` });
+    }
+
+    // Prepend the new post
+    blogs.unshift(newPost);
+    const updatedContent = JSON.stringify(blogs, null, 2);
+
+    // Write to all paths that exist to keep dev server and source in sync
+    let writeCount = 0;
+    for (const p of possiblePaths) {
+      if (fs.existsSync(p) || p.endsWith(join('public', 'blogs.json'))) {
+        fs.writeFileSync(p, updatedContent, 'utf8');
+        writeCount++;
+      }
+    }
+
+    return res.json({ success: true, message: `Blog post added successfully. Updated ${writeCount} file locations.` });
+  } catch (error: any) {
+    console.error('Error adding blog post:', error);
+    return res.status(500).json({ error: error.message || 'Internal server error' });
+  }
+});
 
 /**
  * Serve static files from /browser

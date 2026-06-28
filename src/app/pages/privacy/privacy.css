@@ -1,0 +1,65 @@
+.privacy-page {
+  padding-bottom: 8rem;
+}
+.page-header {
+  padding: 8rem 0 3rem 0;
+  text-align: center;
+}
+.page-title {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.page-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.legal-content-section {
+  padding: 2rem 0;
+}
+.legal-box {
+  padding: 3.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.legal-box h2 {
+  font-size: 1.5rem;
+  margin: 2rem 0 0.75rem 0;
+  color: var(--text-primary);
+}
+.legal-box h2:first-of-type {
+  margin-top: 0;
+}
+.legal-box p {
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.legal-box ul {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+.legal-box li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+.legal-box a {
+  color: var(--accent-purple);
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 6rem 0 2rem 0;
+  }
+  .page-title {
+    font-size: 2.2rem;
+  }
+  .legal-box {
+    padding: 2rem 1.5rem;
+  }
+}

@@ -1,0 +1,123 @@
+.page-header {
+  padding: 8rem 0 3rem 0;
+  text-align: center;
+}
+.page-title {
+  font-size: 3rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.page-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.story-section {
+  padding: 4rem 0;
+}
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 4rem;
+  align-items: center;
+}
+.story-text h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+.story-text p {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.accent-sub {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--accent-purple);
+}
+.principles-list {
+  list-style: none;
+}
+.principles-list li {
+  margin-bottom: 1.25rem;
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+}
+.principles-list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent-blue);
+  font-weight: bold;
+}
+
+.story-visual {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+.story-visual h3 {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+.stat-box {
+  margin-bottom: 2rem;
+}
+.stat-box:last-child {
+  margin-bottom: 0;
+}
+.stat-number {
+  display: block;
+  font-size: 2.2rem;
+  font-family: var(--font-title);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stat-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.action-footer {
+  padding: 6rem 0 10rem 0;
+}
+.text-center {
+  text-align: center;
+}
+.action-footer h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.action-footer p {
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 992px) {
+  .layout-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .story-visual {
+    max-width: 500px;
+    margin: 0 auto;
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  .page-header {
+    padding: 6rem 0 2rem 0;
+  }
+  .page-title {
+    font-size: 2.2rem;
+  }
+}

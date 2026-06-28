@@ -1,0 +1,89 @@
+<div class="blog-detail-page" *ngIf="post()">
+  <!-- Article Hero Header -->
+  <header class="article-header">
+    <div class="container article-header-container">
+      <div class="article-meta-wrapper">
+        <span class="badge">{{ post()?.genre }}</span>
+        <span class="meta-separator">&bull;</span>
+        <span>{{ post()?.publishedDate }}</span>
+        <span class="meta-separator">&bull;</span>
+        <span>{{ post()?.readTime }}</span>
+      </div>
+      <h1 class="article-title">{{ post()?.title }}</h1>
+      <div class="author-info">
+        <div class="author-details">
+          <span class="author-label">Written by</span>
+          <span class="author-name">{{ post()?.author }}</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured Image -->
+  <div class="container image-container">
+    <div class="image-wrapper glass-panel">
+      <div class="blur-background" [style.background-image]="'url(' + post()?.imageUrl + ')'"></div>
+      <img [src]="post()?.imageUrl" [alt]="post()?.title" class="featured-image">
+    </div>
+  </div>
+
+  <!-- Main Article Layout -->
+  <div class="container article-layout">
+    <main class="article-main">
+      
+      <!-- FTC Affiliate Disclosure Box (REQUIRED US RULE compliance) -->
+      <div class="ftc-post-disclosure glass-panel">
+        <div class="disclosure-header">
+          <span class="disclosure-icon">⚖️</span>
+          <strong>Affiliate Disclosure Notice</strong>
+        </div>
+        <p>{{ post()?.affiliateDisclosure }}</p>
+        <p class="disclosure-disclaimer">
+          We only recommend items we have personally tested, evaluated, or believe add genuine value to our readers. 
+          Purchasing through these links costs you nothing extra but directly supports our detailed research. 
+          See our full <a routerLink="/disclosure" class="disclosure-link">Affiliate Disclosure Page</a> for more information.
+        </p>
+      </div>
+
+      <!-- Body Content (HTML rendered from service) -->
+      <article class="article-body" [innerHTML]="post()?.content">
+      </article>
+      
+      <!-- Article Footer tags -->
+      <div class="article-tags">
+        <span class="tag-label">Tags:</span>
+        <span class="keyword-tag" *ngFor="let keyword of post()?.keywords">#{{ keyword }}</span>
+      </div>
+
+      <!-- Writer Signature -->
+      <div class="writer-footer glass-panel">
+        <h4>About the Author</h4>
+        <p><strong>{{ post()?.author }}</strong> is a senior curator for BetterThanTheBasic, specializing in breaking down complex products and habits into simple, high-performance blueprints.</p>
+      </div>
+    </main>
+
+    <!-- Sidebar (Affiliate recommendation highlights or navigation) -->
+    <aside class="article-sidebar">
+      <div class="sidebar-box glass-panel">
+        <h3>Related Blueprint</h3>
+        <p>Looking to upgrade your daily habits or workflow? Browse our full catalog of curated essentials.</p>
+        <a routerLink="/blogs" class="btn btn-primary sidebar-btn">Browse Catalog</a>
+      </div>
+      
+      <div class="sidebar-box glass-panel">
+        <h3>USA FTC Statement</h3>
+        <p>This blog complies fully with the Federal Trade Commission (FTC) guidelines concerning the use of endorsements and testimonials in advertising. Read our official disclosure statement.</p>
+        <a routerLink="/disclosure" class="sidebar-link">Compliance Details &rarr;</a>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<!-- Blog Not Found -->
+<div class="blog-not-found container" *ngIf="!post() && loaded()">
+  <div class="error-card glass-panel">
+    <h2>Blueprint Not Found</h2>
+    <p>We couldn't locate the guide you are searching for. It may have been relocated or updated.</p>
+    <a routerLink="/blogs" class="btn btn-primary">Return to Knowledge Hub</a>
+  </div>
+</div>

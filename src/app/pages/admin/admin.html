@@ -1,0 +1,213 @@
+<div class="admin-page">
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">Publisher Portal</span>
+      <h1 class="page-title">Create Blueprint</h1>
+      <p class="page-subtitle">Publish a new high-performance review or lifestyle system blueprint.</p>
+    </div>
+  </section>
+
+  <section class="form-section">
+    <div class="container admin-container">
+      <!-- Status Banner -->
+      <div class="status-banner glass-panel" [ngClass]="isLocalhost() ? 'status-local' : 'status-vercel'">
+        <div class="status-dot"></div>
+        <div class="status-text">
+          <strong *ngIf="isLocalhost()">Development Environment Detected:</strong>
+          <strong *ngIf="!isLocalhost()">Vercel Serverless Environment (Read-Only):</strong>
+          <span> {{ isLocalhost() ? 'Writing Directly to public/blogs.json' : 'Saves will generate a downloadable blogs.json file to commit to git.' }}</span>
+        </div>
+      </div>
+
+      <!-- Feedback Cards -->
+      <div class="feedback-card error-box glass-panel" *ngIf="errorMessage()">
+        <span class="feedback-icon">⚠️</span>
+        <p>{{ errorMessage() }}</p>
+      </div>
+
+      <div class="feedback-card success-box glass-panel" *ngIf="successMessage()">
+        <span class="feedback-icon">✓</span>
+        <p>{{ successMessage() }}</p>
+      </div>
+
+      <!-- Main Form -->
+      <form (submit)="onSubmit($event)" class="admin-form glass-panel" *ngIf="!generatedJsonString()">
+        <div class="form-row grid-2">
+          <div class="form-group">
+            <label for="title">Blueprint Title *</label>
+            <input 
+              pInputText 
+              type="text" 
+              id="title" 
+              placeholder="E.g., The Ultimate Standing Desk: Peak Ergo Guide" 
+              [ngModel]="title()" 
+              (ngModelChange)="onTitleChange($event)"
+              name="title" 
+              required
+              class="w-full"
+            >
+          </div>
+          <div class="form-group">
+            <label for="slug">URL Slug *</label>
+            <input 
+              pInputText 
+              type="text" 
+              id="slug" 
+              placeholder="e.g., peak-ergo-standing-desk" 
+              [ngModel]="slug()" 
+              (ngModelChange)="slug.set($event)"
+              name="slug" 
+              required
+              class="w-full"
+            >
+          </div>
+        </div>
+
+        <div class="form-row grid-3">
+          <div class="form-group">
+            <label>Genre</label>
+            <p-select 
+              [options]="genresList" 
+              [ngModel]="genre()" 
+              (ngModelChange)="genre.set($event)"
+              name="genre" 
+              optionLabel="label" 
+              optionValue="value"
+              class="w-full"
+            ></p-select>
+          </div>
+          <div class="form-group">
+            <label for="author">Author *</label>
+            <input 
+              pInputText 
+              type="text" 
+              id="author" 
+              [ngModel]="author()" 
+              (ngModelChange)="author.set($event)"
+              name="author" 
+              required
+              class="w-full"
+            >
+          </div>
+          <div class="form-group flex-row-center">
+            <p-checkbox 
+              [ngModel]="featured()" 
+              (ngModelChange)="featured.set($event || false)"
+              binary="true" 
+              inputId="featured" 
+              name="featured"
+            ></p-checkbox>
+            <label for="featured" class="checkbox-label ml-2">Feature on Home Page</label>
+          </div>
+        </div>
+
+        <div class="form-row grid-2">
+          <div class="form-group">
+            <label for="imageUrl">Featured Image URL</label>
+            <input 
+              pInputText 
+              type="text" 
+              id="imageUrl" 
+              placeholder="E.g., https://images.unsplash.com/... or /assets/desk.png" 
+              [ngModel]="imageUrl()" 
+              (ngModelChange)="imageUrl.set($event)"
+              name="imageUrl"
+              class="w-full"
+            >
+          </div>
+          <div class="form-group">
+            <label for="keywords">Keyword Tags (Comma Separated)</label>
+            <input 
+              pInputText 
+              type="text" 
+              id="keywords" 
+              placeholder="E.g., standing desk, ergo, remote work" 
+              [ngModel]="keywordsInput()" 
+              (ngModelChange)="keywordsInput.set($event)"
+              name="keywordsInput"
+              class="w-full"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Short Description / Subtitle *</label>
+          <textarea 
+            pTextarea 
+            id="description" 
+            rows="3" 
+            placeholder="A compelling 1-2 sentence description explaining what this blueprint covers." 
+            [ngModel]="description()" 
+            (ngModelChange)="description.set($event)"
+            name="description" 
+            required
+            class="w-full"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="affiliateDisclosure">Affiliate Disclosure Box Notice</label>
+          <textarea 
+            pTextarea 
+            id="affiliateDisclosure" 
+            rows="2" 
+            [ngModel]="affiliateDisclosure()" 
+            (ngModelChange)="affiliateDisclosure.set($event)"
+            name="affiliateDisclosure"
+            class="w-full"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="content">Article Body Content (Supports HTML) *</label>
+          <p class="field-help">Use standard HTML elements like &lt;h2&gt;, &lt;p&gt;, &lt;ul&gt;, and &lt;li&gt;. Link items using custom affiliate urls.</p>
+          <textarea 
+            pTextarea 
+            id="content" 
+            rows="12" 
+            placeholder="<p class='lead'>Deep dive paragraph...</p><h2>1. The Gear Product Name</h2><p>Description and link <a href='...' target='_blank'>Click here</a>...</p>" 
+            [ngModel]="content()" 
+            (ngModelChange)="content.set($event)"
+            name="content" 
+            required
+            class="w-full content-textarea"
+          ></textarea>
+        </div>
+
+        <div class="form-actions">
+          <span class="read-time-indicator">Estimated: {{ readTime() }}</span>
+          <button 
+            pButton 
+            type="submit" 
+            [label]="isLocalhost() ? 'Save Blueprint' : 'Generate blogs.json'" 
+            [loading]="loading()"
+            class="btn-primary-pbutton admin-submit-btn"
+          ></button>
+        </div>
+      </form>
+
+      <!-- Vercel Download Section -->
+      <div class="vercel-download-card glass-panel text-center" *ngIf="generatedJsonString()">
+        <h3>New blogs.json Generated!</h3>
+        <p>Because you are browsing this on a live Vercel server, we cannot write directly to the project files. Follow these steps to publish:</p>
+        
+        <ol class="step-list text-left">
+          <li>Download the updated <code>blogs.json</code> file below.</li>
+          <li>Replace the file located in your project root's <code>public/blogs.json</code> directory with this new file.</li>
+          <li>Commit the change and push to GitHub (<code>git commit -am "add new blog" && git push</code>).</li>
+          <li>Vercel will automatically compile and serve your new article!</li>
+        </ol>
+
+        <div class="download-actions">
+          <a [href]="downloadUrl()" download="blogs.json" pButton class="btn-primary-pbutton download-btn" label="Download blogs.json"></a>
+          <button pButton type="button" (click)="generatedJsonString.set('')" class="btn-secondary-pbutton reset-btn" label="Create Another Post"></button>
+        </div>
+
+        <div class="json-preview-group text-left">
+          <label>Raw JSON Output Preview (Scroll/Copy)</label>
+          <textarea pTextarea rows="15" readonly class="w-full json-preview-box" [value]="generatedJsonString()"></textarea>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

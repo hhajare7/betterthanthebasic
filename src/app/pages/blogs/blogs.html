@@ -1,0 +1,90 @@
+<div class="blogs-page">
+  <!-- Header Area -->
+  <section class="page-header">
+    <div class="container">
+      <span class="badge">The Knowledge Hub</span>
+      <h1 class="page-title">Premium Blueprints & Guides</h1>
+      <p class="page-subtitle">Fully researched blueprints and curated product guides across clinical skincare, home & office decor, smart electronic gadgets, and daily essentials.</p>
+    </div>
+  </section>
+
+  <!-- Search & Filters Container -->
+  <section class="filters-section">
+    <div class="container">
+      <div class="controls-wrapper glass-panel">
+        <!-- Search Input -->
+        <div class="search-box">
+          <span class="search-icon">🔍</span>
+          <input 
+            pInputText
+            type="text" 
+            placeholder="Search keywords, genres, titles..." 
+            [ngModel]="searchQuery()" 
+            (ngModelChange)="searchQuery.set($event)"
+            class="search-input"
+          >
+        </div>
+        
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+          <button 
+            pButton
+            type="button"
+            class="tab-btn" 
+            [class.active]="selectedGenre() === 'All'"
+            (click)="selectedGenre.set('All')"
+            label="All Genres"
+          >
+          </button>
+          <button 
+            pButton
+            type="button"
+            class="tab-btn" 
+            *ngFor="let genre of genres()"
+            [class.active]="selectedGenre() === genre"
+            (click)="selectedGenre.set(genre)"
+            [label]="genre"
+          >
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blogs List -->
+  <section class="blogs-list-section">
+    <div class="container">
+      <!-- Zero Results -->
+      <div class="no-results glass-panel" *ngIf="filteredBlogs().length === 0">
+        <h3>No blueprints found</h3>
+        <p>No guides match your search terms: "{{ searchQuery() }}". Try clearing filters or searching for terms like "money", "desk", or "habit".</p>
+        <button pButton type="button" class="btn-secondary-pbutton" (click)="resetFilters()" label="Reset Filters"></button>
+      </div>
+
+      <!-- Blog Cards Grid -->
+      <div class="blogs-grid" *ngIf="filteredBlogs().length > 0">
+        <article class="blog-card glass-panel" *ngFor="let blog of filteredBlogs()">
+          <div class="card-image-wrapper">
+            <img [src]="blog.imageUrl" [alt]="blog.title" loading="lazy">
+            <span class="card-genre-badge">{{ blog.genre }}</span>
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <span>{{ blog.publishedDate }}</span>
+              <span class="meta-dot"></span>
+              <span>{{ blog.readTime }}</span>
+            </div>
+            <h3 class="card-title">
+              <a [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a>
+            </h3>
+            <p class="card-description">{{ blog.description }}</p>
+            <div class="card-footer">
+              <span class="author-name">By {{ blog.author }}</span>
+              <a [routerLink]="['/blogs', blog.slug]" class="read-btn">Read Blueprint &rarr;</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</div>
