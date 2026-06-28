@@ -39,6 +39,7 @@ export class AdminComponent implements OnInit {
   content = signal('');
   author = signal('Hemant Hajare');
   keywordsInput = signal('');
+  amazonLink = signal('');
   affiliateDisclosure = signal('This post contains affiliate links. If you purchase through these links, we earn a commission at no extra cost to you.');
   featured = signal(false);
 
@@ -124,6 +125,7 @@ export class AdminComponent implements OnInit {
       readTime: this.readTime(),
       author: this.author(),
       keywords: parsedKeywords,
+      amazonLink: this.amazonLink(),
       affiliateDisclosure: this.affiliateDisclosure(),
       featured: this.featured(),
       content: this.content()
@@ -207,6 +209,7 @@ export class AdminComponent implements OnInit {
     this.description.set('');
     this.content.set('');
     this.keywordsInput.set('');
+    this.amazonLink.set('');
     this.featured.set(false);
   }
 }

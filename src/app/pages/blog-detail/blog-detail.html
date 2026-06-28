@@ -45,6 +45,24 @@
         </p>
       </div>
 
+      <!-- Featured Deal CTA Banner (Top of Content) -->
+      <div class="featured-deal-card glass-panel animate-border" *ngIf="post()?.amazonLink">
+        <div class="deal-badge">
+          <span class="badge-icon">⚡</span> EDITOR'S CHOICE BLUEPRINT DEAL
+        </div>
+        <div class="deal-content">
+          <div class="deal-meta">
+            <h3>{{ (post()?.title ?? '').split(' — ')[0] }} Vetted Recommendation</h3>
+            <p>Tested and approved. Click below to verify availability, review pricing structures, and read verified customer feedback directly on Amazon.</p>
+          </div>
+          <div class="deal-action">
+            <a [href]="post()?.amazonLink" target="_blank" rel="nofollow noopener" class="btn-amazon-cta pulsate-button">
+              <span class="btn-icon">🛒</span> Check Price on Amazon
+            </a>
+          </div>
+        </div>
+      </div>
+
       <!-- Body Content (HTML rendered from service) -->
       <article class="article-body" [innerHTML]="post()?.content">
       </article>
@@ -64,6 +82,25 @@
 
     <!-- Sidebar (Affiliate recommendation highlights or navigation) -->
     <aside class="article-sidebar">
+      <!-- Sticky Amazon Affiliate Sidebar Box -->
+      <div class="sidebar-box sticky-deal-card glass-panel" *ngIf="post()?.amazonLink">
+        <div class="sticky-card-header">
+          <span class="deal-sparkle">★</span> VETTED COMPONENT
+        </div>
+        <div class="sticky-product-image-wrapper">
+          <img [src]="post()?.imageUrl" [alt]="post()?.title">
+        </div>
+        <h4 class="sticky-product-title">{{ (post()?.title ?? '').split(' — ')[0] }}</h4>
+        <div class="product-rating">
+          <span class="star-rating">★★★★★</span>
+          <span class="rating-label">Independent Review Standard</span>
+        </div>
+        <p class="sticky-deal-desc">Secure yours through our verified link to access verified seller warranties, rapid distribution options, and standard protections.</p>
+        <a [href]="post()?.amazonLink" target="_blank" rel="nofollow noopener" class="btn-amazon-sidebar">
+          <span class="cart-icon">🛒</span> Shop on Amazon &rarr;
+        </a>
+      </div>
+
       <div class="sidebar-box glass-panel">
         <h3>Related Blueprint</h3>
         <p>Looking to upgrade your daily habits or workflow? Browse our full catalog of curated essentials.</p>

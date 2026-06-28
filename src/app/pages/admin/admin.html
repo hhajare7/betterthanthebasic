@@ -131,6 +131,20 @@
         </div>
 
         <div class="form-group">
+          <label for="amazonLink">Amazon Affiliate Product URL</label>
+          <input 
+            pInputText 
+            type="text" 
+            id="amazonLink" 
+            placeholder="E.g., https://www.amazon.com/dp/B00464EC1E (Used to generate Shop on Amazon CTA buttons)" 
+            [ngModel]="amazonLink()" 
+            (ngModelChange)="amazonLink.set($event)"
+            name="amazonLink"
+            class="w-full"
+          >
+        </div>
+
+        <div class="form-group">
           <label for="description">Short Description / Subtitle *</label>
           <textarea 
             pTextarea 
