@@ -63,7 +63,7 @@
 
       <!-- Blog Cards Grid -->
       <div class="blogs-grid" *ngIf="filteredBlogs().length > 0">
-        <article class="blog-card glass-panel" *ngFor="let blog of filteredBlogs()">
+        <article class="blog-card glass-panel" *ngFor="let blog of filteredBlogs()" [routerLink]="['/blogs', blog.slug]" style="cursor: pointer;">
           <div class="card-image-wrapper">
             <img [src]="blog.imageUrl" [alt]="blog.title" loading="lazy">
             <span class="card-genre-badge">{{ blog.genre }}</span>
@@ -75,12 +75,12 @@
               <span>{{ blog.readTime }}</span>
             </div>
             <h3 class="card-title">
-              <a [routerLink]="['/blogs', blog.slug]">{{ blog.title }}</a>
+              {{ blog.title }}
             </h3>
             <p class="card-description">{{ blog.description }}</p>
             <div class="card-footer">
               <span class="author-name">By {{ blog.author }}</span>
-              <a [routerLink]="['/blogs', blog.slug]" class="read-btn">Read Blueprint &rarr;</a>
+              <span class="read-btn">Read Blueprint &rarr;</span>
             </div>
           </div>
         </article>
