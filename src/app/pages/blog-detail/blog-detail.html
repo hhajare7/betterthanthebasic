@@ -22,7 +22,7 @@
   <!-- Featured Image -->
   <div class="container image-container">
     <div class="image-wrapper glass-panel">
-      <div class="blur-background" [style.background-image]="'url(' + post()?.imageUrl + ')'"></div>
+      <div class="blur-background" [style.--bg-image]="'url(' + post()?.imageUrl + ')'"></div>
       <img [src]="post()?.imageUrl" [alt]="post()?.title" class="featured-image">
     </div>
   </div>
