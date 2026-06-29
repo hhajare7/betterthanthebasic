@@ -37,7 +37,7 @@ export class AdminComponent implements OnInit {
   imageUrl = signal('');
   description = signal('');
   content = signal('');
-  author = signal('Hemant Hajare');
+  author = signal('Editorial Staff');
   keywordsInput = signal('');
   amazonLink = signal('');
   affiliateDisclosure = signal('This post contains affiliate links. If you purchase through these links, we earn a commission at no extra cost to you.');
