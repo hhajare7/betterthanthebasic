@@ -30,7 +30,7 @@
   <!-- Main Article Layout -->
   <div class="container article-layout">
     <main class="article-main">
-      
+
       <!-- FTC Affiliate Disclosure Box (REQUIRED US RULE compliance) -->
       <div class="ftc-post-disclosure glass-panel">
         <div class="disclosure-header">
@@ -39,9 +39,10 @@
         </div>
         <p>{{ post()?.affiliateDisclosure }}</p>
         <p class="disclosure-disclaimer">
-          We only recommend items we have personally tested, evaluated, or believe add genuine value to our readers. 
-          Purchasing through these links costs you nothing extra but directly supports our detailed research. 
-          See our full <a routerLink="/disclosure" class="disclosure-link">Affiliate Disclosure Page</a> for more information.
+          We only recommend items we have personally tested, evaluated, or believe add genuine value to our readers.
+          Purchasing through these links costs you nothing extra but directly supports our detailed research.
+          See our full <a routerLink="/disclosure" class="disclosure-link">Affiliate Disclosure Page</a> for more
+          information.
         </p>
       </div>
 
@@ -53,10 +54,12 @@
         <div class="deal-content">
           <div class="deal-meta">
             <h3>{{ (post()?.title ?? '').split(' — ')[0] }} Vetted Recommendation</h3>
-            <p>Tested and approved. Click below to verify availability, review pricing structures, and read verified customer feedback directly on Amazon.</p>
+            <p>Tested and approved. Click below to verify availability, review pricing structures, and read verified
+              customer feedback directly on Amazon.</p>
           </div>
           <div class="deal-action">
-            <a [href]="post()?.amazonLink" target="_blank" rel="nofollow noopener" class="btn-amazon-cta pulsate-button">
+            <a [href]="post()?.amazonLink" target="_blank" rel="nofollow noopener"
+              class="btn-amazon-cta pulsate-button">
               <span class="btn-icon">🛒</span> Check Price on Amazon
             </a>
           </div>
@@ -66,7 +69,7 @@
       <!-- Body Content (HTML rendered from service) -->
       <article class="article-body" [innerHTML]="post()?.content">
       </article>
-      
+
       <!-- Article Footer tags -->
       <div class="article-tags">
         <span class="tag-label">Tags:</span>
@@ -76,7 +79,8 @@
       <!-- Writer Signature -->
       <div class="writer-footer glass-panel">
         <h4>About the Author</h4>
-        <p><strong>{{ post()?.author }}</strong> is a senior curator for BetterThanTheBasic, specializing in breaking down complex products and habits into simple, high-performance blueprints.</p>
+        <p><strong>{{ post()?.author }}</strong> is a senior curator for BetterThanTheBasic, specializing in breaking
+          down complex products and habits into simple, high-performance blueprints.</p>
       </div>
     </main>
 
@@ -95,7 +99,8 @@
           <span class="star-rating">★★★★★</span>
           <span class="rating-label">Independent Review Standard</span>
         </div>
-        <p class="sticky-deal-desc">Secure yours through our verified link to access verified seller warranties, rapid distribution options, and standard protections.</p>
+        <p class="sticky-deal-desc">Secure yours through our verified link to access verified seller warranties, rapid
+          distribution options, and standard protections.</p>
         <a [href]="post()?.amazonLink" target="_blank" rel="nofollow noopener" class="btn-amazon-sidebar">
           <span class="cart-icon">🛒</span> Shop on Amazon &rarr;
         </a>
@@ -106,10 +111,11 @@
         <p>Looking to upgrade your daily habits or workflow? Browse our full catalog of curated essentials.</p>
         <a routerLink="/blogs" class="btn btn-primary sidebar-btn">Browse Catalog</a>
       </div>
-      
+
       <div class="sidebar-box glass-panel">
         <h3>USA FTC Statement</h3>
-        <p>This blog complies fully with the Federal Trade Commission (FTC) guidelines concerning the use of endorsements and testimonials in advertising. Read our official disclosure statement.</p>
+        <p>This blog complies fully with the Federal Trade Commission (FTC) guidelines concerning the use of
+          endorsements and testimonials in advertising. Read our official disclosure statement.</p>
         <a routerLink="/disclosure" class="sidebar-link">Compliance Details &rarr;</a>
       </div>
     </aside>
