@@ -42,6 +42,7 @@ export class AdminComponent implements OnInit {
   amazonLink = signal('');
   affiliateDisclosure = signal('This post contains affiliate links. If you purchase through these links, we earn a commission at no extra cost to you.');
   featured = signal(false);
+  country = signal('USA');
 
   // Genres list for dropdown
   genresList: DropdownItem[] = [
@@ -49,6 +50,11 @@ export class AdminComponent implements OnInit {
     { label: 'Home & Office Decor', value: 'Home & Office Decor' },
     { label: 'Electronic Gadgets', value: 'Electronic Gadgets' },
     { label: 'Miscellaneous', value: 'Miscellaneous' }
+  ];
+
+  countriesList: DropdownItem[] = [
+    { label: 'USA / Global', value: 'USA' },
+    { label: 'India', value: 'India' }
   ];
 
   // Environment checks & feedback
@@ -128,6 +134,7 @@ export class AdminComponent implements OnInit {
       amazonLink: this.amazonLink(),
       affiliateDisclosure: this.affiliateDisclosure(),
       featured: this.featured(),
+      country: this.country(),
       content: this.content()
     };
   }
@@ -211,5 +218,6 @@ export class AdminComponent implements OnInit {
     this.keywordsInput.set('');
     this.amazonLink.set('');
     this.featured.set(false);
+    this.country.set('USA');
   }
 }

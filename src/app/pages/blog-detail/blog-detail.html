@@ -13,7 +13,14 @@
       <div class="author-info">
         <div class="author-details">
           <span class="author-label">Written by</span>
-          <span class="author-name">{{ post()?.author }}</span>
+          <div class="author-meta-line">
+            <span class="author-name">{{ post()?.author }}</span>
+            <span class="meta-separator" *ngIf="post()?.country">&bull;</span>
+            <span class="location-badge" *ngIf="post()?.country">
+              <span class="location-flag">{{ post()?.country === 'India' ? '🇮🇳' : '🇺🇸' }}</span>
+              {{ post()?.country }}
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -31,20 +38,6 @@
   <div class="container article-layout">
     <main class="article-main">
 
-      <!-- FTC Affiliate Disclosure Box (REQUIRED US RULE compliance) -->
-      <div class="ftc-post-disclosure glass-panel">
-        <div class="disclosure-header">
-          <span class="disclosure-icon">⚖️</span>
-          <strong>Affiliate Disclosure Notice</strong>
-        </div>
-        <p>{{ post()?.affiliateDisclosure }}</p>
-        <p class="disclosure-disclaimer">
-          We only recommend items we have personally tested, evaluated, or believe add genuine value to our readers.
-          Purchasing through these links costs you nothing extra but directly supports our detailed research.
-          See our full <a routerLink="/disclosure" class="disclosure-link">Affiliate Disclosure Page</a> for more
-          information.
-        </p>
-      </div>
 
       <!-- Featured Deal CTA Banner (Top of Content) -->
       <div class="featured-deal-card glass-panel animate-border" *ngIf="post()?.amazonLink">
@@ -74,6 +67,21 @@
       <div class="article-tags">
         <span class="tag-label">Tags:</span>
         <span class="keyword-tag" *ngFor="let keyword of post()?.keywords">#{{ keyword }}</span>
+      </div>
+
+      <!-- FTC Affiliate Disclosure Box (REQUIRED US RULE compliance) -->
+      <div class="ftc-post-disclosure glass-panel">
+        <div class="disclosure-header">
+          <span class="disclosure-icon">⚖️</span>
+          <strong>Affiliate Disclosure Notice</strong>
+        </div>
+        <p>{{ post()?.affiliateDisclosure }}</p>
+        <p class="disclosure-disclaimer">
+          We only recommend items we have personally tested, evaluated, or believe add genuine value to our readers.
+          Purchasing through these links costs you nothing extra but directly supports our detailed research.
+          See our full <a routerLink="/disclosure" class="disclosure-link">Affiliate Disclosure Page</a> for more
+          information.
+        </p>
       </div>
 
 
