@@ -73,10 +73,6 @@
               <span>{{ blog.publishedDate }}</span>
               <span class="meta-dot"></span>
               <span>{{ blog.readTime }}</span>
-              <span class="meta-dot" *ngIf="blog.country"></span>
-              <span class="card-country" *ngIf="blog.country">
-                {{ blog.country === 'India' ? '🇮🇳' : '🇺🇸' }} {{ blog.country }}
-              </span>
             </div>
             <h3 class="card-title">
               {{ blog.title }}
