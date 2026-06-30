@@ -15,6 +15,7 @@ export interface BlogPost {
   affiliateDisclosure: string;
   featured: boolean;
   amazonLink?: string;
+  country?: string;
 }
 
 @Injectable({

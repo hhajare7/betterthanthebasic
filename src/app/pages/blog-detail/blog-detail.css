@@ -54,6 +54,36 @@
   color: var(--text-primary);
 }
 
+.author-meta-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.location-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.15rem 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 99px;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.location-flag {
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.meta-separator {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
 .image-container {
   margin-bottom: 4rem;
 }

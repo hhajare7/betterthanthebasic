@@ -13,7 +13,14 @@
       <div class="author-info">
         <div class="author-details">
           <span class="author-label">Written by</span>
-          <span class="author-name">{{ post()?.author }}</span>
+          <div class="author-meta-line">
+            <span class="author-name">{{ post()?.author }}</span>
+            <span class="meta-separator" *ngIf="post()?.country">&bull;</span>
+            <span class="location-badge" *ngIf="post()?.country">
+              <span class="location-flag">{{ post()?.country === 'India' ? '🇮🇳' : '🇺🇸' }}</span>
+              {{ post()?.country }}
+            </span>
+          </div>
         </div>
       </div>
     </div>
