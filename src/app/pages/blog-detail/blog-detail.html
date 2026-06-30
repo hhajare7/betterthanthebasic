@@ -62,20 +62,6 @@
         <span class="keyword-tag" *ngFor="let keyword of post()?.keywords">#{{ keyword }}</span>
       </div>
 
-      <!-- FTC Affiliate Disclosure Box (REQUIRED US RULE compliance) -->
-      <div class="ftc-post-disclosure glass-panel">
-        <div class="disclosure-header">
-          <span class="disclosure-icon">⚖️</span>
-          <strong>Affiliate Disclosure Notice</strong>
-        </div>
-        <p>{{ post()?.affiliateDisclosure }}</p>
-        <p class="disclosure-disclaimer">
-          We only recommend items we have personally tested, evaluated, or believe add genuine value to our readers.
-          Purchasing through these links costs you nothing extra but directly supports our detailed research.
-          See our full <a routerLink="/disclosure" class="disclosure-link">Affiliate Disclosure Page</a> for more
-          information.
-        </p>
-      </div>
 
 
     </main>
@@ -113,6 +99,21 @@
         <p>This blog complies fully with the Federal Trade Commission (FTC) guidelines concerning the use of
           endorsements and testimonials in advertising. Read our official disclosure statement.</p>
         <a routerLink="/disclosure" class="sidebar-link">Compliance Details &rarr;</a>
+      </div>
+
+      <!-- FTC Affiliate Disclosure Box (REQUIRED US RULE compliance) -->
+      <div class="sidebar-box glass-panel ftc-post-disclosure">
+        <div class="disclosure-header">
+          <span class="disclosure-icon">⚖️</span>
+          <strong>Affiliate Disclosure Notice</strong>
+        </div>
+        <p>{{ post()?.affiliateDisclosure }}</p>
+        <p class="disclosure-disclaimer">
+          We only recommend items we have personally tested, evaluated, or believe add genuine value to our readers.
+          Purchasing through these links costs you nothing extra but directly supports our detailed research.
+          See our full <a routerLink="/disclosure" class="disclosure-link">Affiliate Disclosure Page</a> for more
+          information.
+        </p>
       </div>
     </aside>
   </div>
