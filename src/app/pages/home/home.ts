@@ -52,6 +52,8 @@ export class HomeComponent implements OnInit {
         return 'Flagship smartphones, cutting-edge mobile platforms, and high-performance electronic gadgets.';
       case 'electronic gadgets':
         return 'High-performance tech gear, custom mechanical keyboards, and smart productivity electronics.';
+      case 'travel and bookings':
+        return 'Pre-booked airport transfers, smart global travel experiences, eSIM cards, and guided tour blueprints.';
       case 'miscellaneous':
         return 'Curated lifestyle upgrades, travel essentials, behavioral design loops, and smart habits.';
       default:

@@ -49,6 +49,7 @@ export class AdminComponent implements OnInit {
     { label: 'Home & Office Decor', value: 'Home & Office Decor' },
     { label: 'Tech Gadgets', value: 'Tech Gadgets' },
     { label: 'Electronic Gadgets', value: 'Electronic Gadgets' },
+    { label: 'Travel and Bookings', value: 'Travel and Bookings' },
     { label: 'Miscellaneous', value: 'Miscellaneous' }
   ];
 
