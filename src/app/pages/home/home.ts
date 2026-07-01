@@ -1,6 +1,8 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { BlogService, BlogPost } from '../../services/blog.service';
 import { SeoService } from '../../services/seo.service';
 import { InputTextModule } from 'primeng/inputtext';
@@ -9,7 +11,7 @@ import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, InputTextModule, ButtonModule],
+  imports: [CommonModule, RouterLink, InputTextModule, ButtonModule, FormsModule],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
@@ -17,10 +19,14 @@ export class HomeComponent implements OnInit {
   recentBlogs = signal<BlogPost[]>([]);
   genres = signal<string[]>([]);
   subscribed = signal(false);
+  email = signal('');
+  isLoading = signal(false);
+  errorMessage = signal('');
 
   constructor(
     private blogService: BlogService,
-    private seoService: SeoService
+    private seoService: SeoService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -53,6 +59,27 @@ export class HomeComponent implements OnInit {
 
   onSubscribe(event: Event): void {
     event.preventDefault();
-    this.subscribed.set(true);
+    const emailVal = this.email().trim();
+    if (!emailVal) return;
+
+    this.isLoading.set(true);
+    this.errorMessage.set('');
+
+    this.http.post<{ success?: boolean; message?: string; error?: string }>('/api/subscribe', { email: emailVal })
+      .subscribe({
+        next: (response) => {
+          this.isLoading.set(false);
+          if (response.success) {
+            this.subscribed.set(true);
+            this.email.set('');
+          } else {
+            this.errorMessage.set(response.error || 'Failed to subscribe. Please try again.');
+          }
+        },
+        error: (err) => {
+          this.isLoading.set(false);
+          this.errorMessage.set(err.error?.error || 'Failed to subscribe. Please try again later.');
+        }
+      });
   }
 }

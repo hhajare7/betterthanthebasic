@@ -24,7 +24,108 @@
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --shadow-subtle: 0 4px 30px rgba(0, 0, 0, 0.2);
   --shadow-glow: 0 0 25px rgba(168, 85, 247, 0.15);
+
+  /* Layout Background Variables */
+  --bg-header: rgba(10, 10, 15, 0.75);
+  --bg-drawer: rgba(10, 10, 15, 0.95);
+  --bg-footer: hsl(240, 24%, 4%);
 }
+
+/* Light Theme Variables & Overrides */
+.light-theme {
+  --bg-primary: hsl(240, 20%, 98%);
+  --bg-secondary: hsl(240, 20%, 94%);
+  --bg-card: rgba(255, 255, 255, 0.75);
+  --bg-card-hover: rgba(255, 255, 255, 0.9);
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-color-hover: rgba(168, 85, 247, 0.4);
+  
+  --accent-purple: hsl(265, 80%, 55%);
+  --accent-purple-dim: hsl(265, 50%, 88%);
+  --accent-blue: hsl(195, 85%, 45%);
+  --accent-pink: hsl(325, 80%, 50%);
+  
+  --text-primary: hsl(240, 24%, 12%);
+  --text-secondary: hsl(240, 10%, 35%);
+  --text-muted: hsl(240, 8%, 52%);
+  
+  --shadow-subtle: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --shadow-glow: 0 0 25px rgba(168, 85, 247, 0.08);
+  
+  --bg-header: rgba(255, 255, 255, 0.75);
+  --bg-drawer: rgba(255, 255, 255, 0.95);
+  --bg-footer: hsl(240, 20%, 95%);
+}
+
+.light-theme body::before {
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(168, 85, 247, 0.03) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(56, 189, 248, 0.03) 0%, transparent 40%),
+    linear-gradient(rgba(0, 0, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.015) 1px, transparent 1px);
+}
+
+.light-theme ::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+.light-theme ::-webkit-scrollbar-thumb {
+  background: hsl(240, 10%, 80%);
+  border: 2px solid var(--bg-primary);
+}
+
+.light-theme ::-webkit-scrollbar-thumb:hover {
+  background: hsl(240, 10%, 70%);
+}
+
+.light-theme .btn-secondary {
+  background: rgba(0, 0, 0, 0.04);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+.light-theme .btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.07);
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* Home Page Subscription CTA Light Theme Overrides (Global to bypass View Encapsulation) */
+.light-theme .cta-card {
+  background: #ffffff !important;
+  border-color: rgba(168, 85, 247, 0.2) !important;
+}
+
+.light-theme .cta-input {
+  background: rgba(0, 0, 0, 0.03) !important;
+  color: var(--text-primary) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.light-theme .cta-input:focus {
+  border-color: var(--accent-purple) !important;
+  box-shadow: 0 0 0 2px rgba(168, 85, 247, 0.15) !important;
+}
+
+.light-theme .cta-input::placeholder {
+  color: var(--text-muted) !important;
+}
+
+/* Global FTC Compliance Banner Light Theme Overrides */
+.light-theme .global-ftc-banner {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  color: var(--text-primary) !important;
+}
+
+.light-theme .global-ftc-banner .banner-link {
+  color: var(--accent-purple) !important;
+}
+
+.light-theme .global-ftc-banner .banner-link:hover {
+  color: var(--accent-blue) !important;
+}
+
+
 
 /* Reset and Base Styles */
 * {

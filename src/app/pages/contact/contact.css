@@ -143,6 +143,13 @@ textarea.form-control {
   border-color: rgba(255, 255, 255, 0.2) !important;
 }
 
+.form-error-message {
+  color: #f87171;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
 /* Success Card */
 .success-card {
   padding: 2rem 0;

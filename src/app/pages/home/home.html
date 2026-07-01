@@ -10,7 +10,8 @@
         <span class="gradient-text">Live Beyond The Basic.</span>
       </h1>
       <p class="hero-subtitle">
-        Expertly researched blueprints in clinical skincare, aesthetic home & office decor, smart electronic gadgets, and curated daily essentials. 
+        Expertly researched blueprints in clinical skincare, aesthetic home & office decor, smart electronic gadgets,
+        and curated daily essentials.
         We review the details, optimize the choices, and disclose everything.
       </p>
       <div class="hero-actions">
@@ -25,7 +26,10 @@
     <div class="container">
       <div class="disclosure-card glass-panel">
         <p>
-          <strong>US Affiliate Disclosure:</strong> BetterThanTheBasic is reader-supported. When you buy through our links, we may earn an affiliate commission from our partners (like Amazon and other platforms) at no additional cost to you. It helps us keep the lights on and provide premium, unbiased reviews. <a routerLink="/disclosure" class="learn-more">Learn more about our review process &rarr;</a>
+          <strong>US Affiliate Disclosure:</strong> BetterThanTheBasic is reader-supported. When you buy through our
+          links, we may earn an affiliate commission from our partners (like Amazon and other platforms) at no
+          additional cost to you. It helps us keep the lights on and provide premium, unbiased reviews. <a
+            routerLink="/disclosure" class="learn-more">Learn more about our review process &rarr;</a>
         </p>
       </div>
     </div>
@@ -40,7 +44,8 @@
           <div class="genre-icon" [ngClass]="genre.toLowerCase().replace(' & ', '-')"></div>
           <h3>{{ genre }}</h3>
           <p>{{ getGenreDescription(genre) }}</p>
-          <a [routerLink]="['/blogs']" [queryParams]="{ genre: genre }" class="genre-link">View {{ genre }} Guides &rarr;</a>
+          <a [routerLink]="['/blogs']" [queryParams]="{ genre: genre }" class="genre-link">View {{ genre }} Guides
+            &rarr;</a>
         </div>
       </div>
     </div>
@@ -53,9 +58,10 @@
         <h2 class="section-title">Recent Premium Guides</h2>
         <a routerLink="/blogs" class="view-all-link">All Articles &rarr;</a>
       </div>
-      
+
       <div class="blogs-grid">
-        <article class="blog-card glass-panel" *ngFor="let blog of recentBlogs()" [routerLink]="['/blogs', blog.slug]" style="cursor: pointer;">
+        <article class="blog-card glass-panel" *ngFor="let blog of recentBlogs()" [routerLink]="['/blogs', blog.slug]"
+          style="cursor: pointer;">
           <div class="card-image-wrapper">
             <img [src]="blog.imageUrl" [alt]="blog.title" loading="lazy">
             <span class="card-genre-badge">{{ blog.genre }}</span>
@@ -85,12 +91,16 @@
     <div class="container">
       <div class="cta-card glass-panel">
         <h2 class="cta-title">Subscribe to the Upgrade</h2>
-        <p class="cta-subtitle">Get one high-performance guide delivered directly to your inbox every Sunday. No spam, only premium insights.</p>
+        <p class="cta-subtitle">Get one high-performance guide delivered directly to your inbox every Sunday. No spam,
+          only premium insights.</p>
         <form (submit)="onSubscribe($event)" class="cta-form">
-          <input pInputText type="email" placeholder="Enter your email address" required class="cta-input">
-          <button pButton type="submit" label="Subscribe" class="btn-primary-pbutton"></button>
+          <input pInputText type="email" name="email" [(ngModel)]="email" placeholder="Enter your email address"
+            required class="cta-input" [disabled]="isLoading()">
+          <button pButton type="submit" [label]="isLoading() ? 'Subscribing...' : 'Subscribe'"
+            class="btn-primary-pbutton" [disabled]="isLoading()"></button>
         </form>
         <p class="cta-success-message" *ngIf="subscribed()">Success! You are on the list to upgrade your essentials.</p>
+        <p class="cta-error-message" *ngIf="errorMessage()">{{ errorMessage() }}</p>
       </div>
     </div>
   </section>

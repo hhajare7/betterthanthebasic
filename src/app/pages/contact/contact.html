@@ -38,25 +38,27 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Your Name</label>
-                <input pInputText type="text" id="name" required class="form-control" placeholder="Aria Vance">
+                <input pInputText type="text" id="name" name="name" [(ngModel)]="name" required class="form-control" placeholder="Aria Vance" [disabled]="isLoading()">
               </div>
               <div class="form-group">
                 <label for="email">Email Address</label>
-                <input pInputText type="email" id="email" required class="form-control" placeholder="aria&#64;example.com">
+                <input pInputText type="email" id="email" name="email" [(ngModel)]="email" required class="form-control" placeholder="aria&#64;example.com" [disabled]="isLoading()">
               </div>
             </div>
             
             <div class="form-group">
               <label for="subject">Subject</label>
-              <input pInputText type="text" id="subject" required class="form-control" placeholder="E.g., Hardware suggestion feedback">
+              <input pInputText type="text" id="subject" name="subject" [(ngModel)]="subject" required class="form-control" placeholder="E.g., Hardware suggestion feedback" [disabled]="isLoading()">
             </div>
 
             <div class="form-group">
               <label for="message">Your Message</label>
-              <textarea pTextarea id="message" rows="5" required class="form-control" placeholder="Write your thoughts here..."></textarea>
+              <textarea pTextarea id="message" name="message" [(ngModel)]="message" rows="5" required class="form-control" placeholder="Write your thoughts here..." [disabled]="isLoading()"></textarea>
             </div>
 
-            <button pButton type="submit" label="Send Message" class="btn-primary-pbutton form-btn"></button>
+            <p class="form-error-message" *ngIf="errorMessage()">{{ errorMessage() }}</p>
+
+            <button pButton type="submit" [label]="isLoading() ? 'Sending Message...' : 'Send Message'" class="btn-primary-pbutton form-btn" [disabled]="isLoading()"></button>
           </form>
 
           <!-- Success Card -->
