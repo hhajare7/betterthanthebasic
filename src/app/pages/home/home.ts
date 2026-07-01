@@ -48,6 +48,8 @@ export class HomeComponent implements OnInit {
         return 'Dermatologist-recommended routines, broad-spectrum sunscreens, and high-efficacy skincare blueprints.';
       case 'home & office decor':
         return 'Ergonomic workspaces, desk aesthetics, modern lighting, and premium home decor blueprints.';
+      case 'tech gadgets':
+        return 'Flagship smartphones, cutting-edge mobile platforms, and high-performance electronic gadgets.';
       case 'electronic gadgets':
         return 'High-performance tech gear, custom mechanical keyboards, and smart productivity electronics.';
       case 'miscellaneous':

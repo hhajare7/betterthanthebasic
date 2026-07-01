@@ -41,7 +41,7 @@
       <h2 class="section-title">Focus Areas</h2>
       <div class="genres-grid">
         <div class="genre-card glass-panel" *ngFor="let genre of genres()">
-          <div class="genre-icon" [ngClass]="genre.toLowerCase().replace(' & ', '-')"></div>
+          <div class="genre-icon" [ngClass]="genre.toLowerCase().replace(' & ', '-').split(' ').join('-')"></div>
           <h3>{{ genre }}</h3>
           <p>{{ getGenreDescription(genre) }}</p>
           <a [routerLink]="['/blogs']" [queryParams]="{ genre: genre }" class="genre-link">View {{ genre }} Guides

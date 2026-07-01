@@ -47,6 +47,7 @@ export class AdminComponent implements OnInit {
   genresList: DropdownItem[] = [
     { label: 'Skincare', value: 'Skincare' },
     { label: 'Home & Office Decor', value: 'Home & Office Decor' },
+    { label: 'Tech Gadgets', value: 'Tech Gadgets' },
     { label: 'Electronic Gadgets', value: 'Electronic Gadgets' },
     { label: 'Miscellaneous', value: 'Miscellaneous' }
   ];
