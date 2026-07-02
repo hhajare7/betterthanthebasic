@@ -4,7 +4,7 @@
     <div class="container banner-content">
       <span class="banner-tag">Notice</span>
       <p>
-        BetterThanTheBasic operates as an independent commercial product guide. We are supported by affiliate commissions on products we evaluate. 
+        BetterThanTheBasic operates as an independent commercial product guide. We are supported by affiliate commissions on products we evaluate.
         <a routerLink="/disclosure" class="banner-link">Read our full compliance details</a>
       </p>
     </div>
@@ -16,7 +16,7 @@
       <a routerLink="/" class="logo">
         <span class="logo-accent">better</span>than<span class="logo-dim">thebasic</span>
       </a>
-      
+
       <div class="header-actions">
         <!-- Desktop Navigation -->
         <nav class="nav-desktop">
@@ -26,7 +26,7 @@
           <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact</a>
           <a routerLink="/disclosure" routerLinkActive="active" class="nav-link nav-special">Disclosure</a>
         </nav>
-        
+
         <!-- Theme Toggle Button -->
         <button class="theme-toggle" (click)="toggleTheme()" aria-label="Toggle Theme">
           @if (isDarkMode()) {
@@ -41,7 +41,7 @@
             </svg>
           }
         </button>
-        
+
         <!-- Mobile Menu Button -->
         <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle Menu">
           <span class="burger-bar" [class.open]="mobileMenuOpen()"></span>
@@ -76,7 +76,7 @@
         </a>
         <p class="brand-tagline">Curating premium blueprints in clinical skincare, home & office decor, smart electronic gadgets, and everyday upgrades.</p>
       </div>
-      
+
       <div class="footer-links-group">
         <h4>Library</h4>
         <a routerLink="/blogs" [queryParams]="{genre: 'Skincare'}">Skincare</a>
@@ -99,14 +99,13 @@
         <a routerLink="/disclosure">Affiliate Disclosure</a>
       </div>
     </div>
-    
+
     <div class="container footer-bottom">
       <p class="ftc-footer-note">
         <strong>FTC Disclaimer:</strong> betterthanthebasic.com is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. We also partner with other hardware vendors and financial platform referrers. When you buy through our links, we may earn an affiliate commission at zero additional cost to you.
       </p>
       <div class="copyright-row">
         <span>&copy; 2026 betterthanthebasic. All rights reserved.</span>
-        <span>Made with Premium Aesthetics</span>
       </div>
     </div>
   </footer>
